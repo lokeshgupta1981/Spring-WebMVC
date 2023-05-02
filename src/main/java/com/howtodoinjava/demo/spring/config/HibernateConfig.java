@@ -1,10 +1,7 @@
 package com.howtodoinjava.demo.spring.config;
 
-import com.howtodoinjava.demo.spring.model.User;
 import java.util.Map;
 import java.util.Properties;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ComponentScans;
@@ -18,14 +15,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @ComponentScans(value = {@ComponentScan("com.howtodoinjava.demo.spring")})
 public class HibernateConfig {
 
-  @Autowired
-  private ApplicationContext context;
-
   @Bean
   public LocalSessionFactoryBean getSessionFactory() {
     LocalSessionFactoryBean factoryBean = new LocalSessionFactoryBean();
-    factoryBean.setAnnotatedClasses(User.class);
-
+    factoryBean.setPackagesToScan("com.howtodoinjava.demo.spring.model");
     /*factoryBean.setConfigLocation(context.getResource("classpath:hibernate.cfg.xml"));*/
     Properties properties = new Properties();
 

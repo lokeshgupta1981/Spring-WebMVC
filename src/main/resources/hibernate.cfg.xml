@@ -13,6 +13,8 @@
     <property name="hibernate.connection.password">password</property>
     <property name="hibernate.connection.url">jdbc:h2:mem:testdb</property>
     <property name="hibernate.hbm2ddl.auto">create-drop</property>
+    <property name="hibernate.packageToScan">com.howtodoinjava.demo.spring.model</property>
+
     <property name="hibernate.c3p0.min_size">5</property>
     <property name="hibernate.c3p0.max_size">20</property>
     <property name="hibernate.c3p0.acquire_increment">2</property>
