@@ -1,5 +1,12 @@
 package com.howtodoinjava.demo.spring.config;
 
+import com.mchange.v2.c3p0.ComboPooledDataSource;
+import com.mchange.v2.c3p0.DataSources;
+import java.beans.PropertyVetoException;
+import java.sql.SQLException;
+import java.util.Map;
+import java.util.Properties;
+import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -14,25 +21,50 @@ import com.howtodoinjava.demo.spring.model.User;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScans(value = { @ComponentScan("com.howtodoinjava.demo.spring")})
+@ComponentScans(value = {@ComponentScan("com.howtodoinjava.demo.spring")})
 public class HibernateConfig {
 
-	@Autowired
-	private ApplicationContext context;
+  @Autowired
+  private ApplicationContext context;
 
-	@Bean
-	public LocalSessionFactoryBean getSessionFactory() {
-		LocalSessionFactoryBean factoryBean = new LocalSessionFactoryBean();
-		factoryBean.setConfigLocation(context.getResource("classpath:hibernate.cfg.xml"));
-		factoryBean.setAnnotatedClasses(User.class);
-		return factoryBean;
-	}
+  @Bean
+  public LocalSessionFactoryBean getSessionFactory() {
+    LocalSessionFactoryBean factoryBean = new LocalSessionFactoryBean();
+    factoryBean.setAnnotatedClasses(User.class);
 
-	@Bean
-	public HibernateTransactionManager getTransactionManager() {
-		HibernateTransactionManager transactionManager = new HibernateTransactionManager();
-		transactionManager.setSessionFactory(getSessionFactory().getObject());
-		return transactionManager;
-	}
+    /*factoryBean.setConfigLocation(context.getResource("classpath:hibernate.cfg.xml"));*/
+    Properties properties = new Properties();
 
+    //Connection pool properties
+    properties.putAll(Map.of(
+        "hibernate.c3p0.min_size", "5",
+        "hibernate.c3p0.max_size", "20",
+        "hibernate.c3p0.acquire_increment", "2",
+        "hibernate.c3p0.max_statements", "150",
+        "hibernate.c3p0.timeout", "1800"
+    ));
+
+    //JPA properties
+    properties.putAll(Map.of(
+        "hibernate.connection.provider_class", "org.hibernate.connection.C3P0ConnectionProvider",
+        "hibernate.connection.username", "sa",
+        "hibernate.connection.password", "password",
+        "hibernate.connection.url", "jdbc:h2:mem:testdb",
+        "hibernate.dialect", "org.hibernate.dialect.H2Dialect",
+        "hibernate.connection.driver_class", "org.h2.Driver",
+        "hibernate.hbm2ddl.auto", "create-drop",
+        "hibernate.archive.autodetection", "class,hbm",
+        "hibernate.show_sql", "true"
+    ));
+
+    factoryBean.setHibernateProperties(properties);
+    return factoryBean;
+  }
+
+  @Bean
+  public HibernateTransactionManager getTransactionManager() {
+    HibernateTransactionManager transactionManager = new HibernateTransactionManager();
+    transactionManager.setSessionFactory(getSessionFactory().getObject());
+    return transactionManager;
+  }
 }
