@@ -20,6 +20,7 @@
     <servlets.version>4.0.1</servlets.version>
     <jsp.version>2.3.3</jsp.version>
     <hsqldb.version>1.8.0.10</hsqldb.version>
+    <jakarta.persistence.version>3.1.0</jakarta.persistence.version>
   </properties>
   <dependencies>
     <!-- Spring MVC Dependency -->
@@ -36,7 +37,12 @@
       <version>${spring.version}</version>
     </dependency>
 
-    <!-- Hibernate ORM -->
+    <dependency>
+      <groupId>jakarta.persistence</groupId>
+      <artifactId>jakarta.persistence-api</artifactId>
+      <version>${jakarta.persistence.version}</version>
+    </dependency>
+
     <dependency>
       <groupId>org.hibernate.orm</groupId>
       <artifactId>hibernate-core</artifactId>
