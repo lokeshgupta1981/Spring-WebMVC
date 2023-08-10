@@ -1,0 +1,11 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Display Message Page Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  </head>
+  <body>
+    <h2>Display Message Page</h2>
+    <p th:text="'Message from server is: ' + ${message}"/>
+  </body>
+</html>
