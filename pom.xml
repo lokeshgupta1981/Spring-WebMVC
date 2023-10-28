@@ -26,6 +26,7 @@
     <module>spring-boot-mvc-hello-world</module>
     <module>spring-mvc-crud-example</module>
     <module>spring-webclient-post-example</module>
+    <module>spring-boot-webclient-retry</module>
   </modules>
 
   <dependencies>
