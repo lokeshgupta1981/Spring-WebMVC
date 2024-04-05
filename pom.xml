@@ -28,6 +28,7 @@
     <module>spring-webclient-post-example</module>
     <module>spring-boot-webclient-retry</module>
     <module>custom-error-views</module>
+    <module>download-file</module>
   </modules>
 
   <dependencies>
