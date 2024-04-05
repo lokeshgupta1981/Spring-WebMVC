@@ -27,6 +27,7 @@
     <module>spring-mvc-crud-example</module>
     <module>spring-webclient-post-example</module>
     <module>spring-boot-webclient-retry</module>
+    <module>custom-error-views</module>
   </modules>
 
   <dependencies>
