@@ -30,6 +30,6 @@ public class HelloWorldService {
 						.filter(ex -> ex instanceof ServiceException).onRetryExhaustedThrow((spec, signal) -> {
 							throw new ServiceException(
 									"Service call failed even after retrying " + signal.totalRetries() + " times");
-						}).doBeforeRetry(x -> logger.info("Retrying " + x.totalRetries())));
+						}).doBeforeRetry(x -> logger.info("Retrying " + x.totalRetries())));z
 	}
 }

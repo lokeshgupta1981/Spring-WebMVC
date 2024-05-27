@@ -3,6 +3,7 @@ package com.howtodoinjava.app.web;
 import com.howtodoinjava.app.model.Item;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.net.URI;
@@ -11,7 +12,7 @@ import java.net.URI;
 public class ItemController {
 
   @PostMapping("/v1/items")
-  public ResponseEntity<Item> create_v1(Item item) {
+  public ResponseEntity<Item> create_v1(@RequestBody Item item) {
 
     //save item in database which sets the id field
     item.setId(11L);
@@ -22,7 +23,7 @@ public class ItemController {
   public ResponseEntity<Void> create_v2(Item item) {
 
     //save item in database which sets the id field
-    item.setId(11L);
+    item.setId(12L);
     return ResponseEntity.created(URI.create("/v2/items" + item.getId()).normalize()).build();
   }
 
