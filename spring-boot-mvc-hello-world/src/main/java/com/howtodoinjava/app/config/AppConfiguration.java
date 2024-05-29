@@ -32,7 +32,6 @@ public class AppConfiguration implements WebMvcConfigurer {
 
     return WebClient.builder()
         .clientConnector(connector)
-        .filter(new CompressionFilter())
         .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
         .build();
   }
