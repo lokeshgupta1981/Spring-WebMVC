@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contacts</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; }
+    table { border-collapse: collapse; }
+    th, td { border: 1px solid #ccc; padding: .4rem .8rem; text-align: left; }
+    .message { color: #2e7d32; }
+    form.inline { display: inline; }
+  </style>
+</head>
+<body>
+<h1>Contacts</h1>
+
+<p class="message" th:if="${message}" th:text="${message}">Contact saved</p>
+
+<p><a th:href="@{/contacts/new}">Add contact</a></p>
+
+<p th:if="${contacts.isEmpty()}">No contacts yet.</p>
+
+<table th:unless="${contacts.isEmpty()}">
+  <thead>
+  <tr><th>Name</th><th>Email</th><th>Phone</th><th>City</th><th></th></tr>
+  </thead>
+  <tbody>
+  <tr th:each="c : ${contacts}">
+    <td th:text="${c.name}">Lokesh</td>
+    <td th:text="${c.email}">lokesh@example.com</td>
+    <td th:text="${c.phone}">555-0101</td>
+    <td th:text="${c.city}">Delhi</td>
+    <td>
+      <a th:href="@{/contacts/{id}/edit(id=${c.id})}">Edit</a>
+      <form class="inline" method="post" th:action="@{/contacts/{id}/delete(id=${c.id})}">
+        <button type="submit">Delete</button>
+      </form>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

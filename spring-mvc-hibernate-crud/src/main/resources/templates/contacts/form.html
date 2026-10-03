@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title th:text="${contact.id == null} ? 'New contact' : 'Edit contact'">Contact</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; }
+    label { display: block; margin-top: .8rem; }
+    .error { color: #c62828; display: block; }
+  </style>
+</head>
+<body>
+<h1 th:text="${contact.id == null} ? 'New contact' : 'Edit contact'">Contact</h1>
+
+<form method="post" th:object="${contact}"
+      th:action="${contact.id == null} ? @{/contacts} : @{/contacts/{id}(id=${contact.id})}">
+
+  <label>Name <input type="text" th:field="*{name}"></label>
+  <span class="error" th:errors="*{name}">Name error</span>
+
+  <label>Email <input type="text" th:field="*{email}"></label>
+  <span class="error" th:errors="*{email}">Email error</span>
+
+  <label>Phone <input type="text" th:field="*{phone}"></label>
+  <span class="error" th:errors="*{phone}">Phone error</span>
+
+  <label>City <input type="text" th:field="*{city}"></label>
+  <span class="error" th:errors="*{city}">City error</span>
+
+  <p>
+    <button type="submit">Save</button>
+    <a th:href="@{/contacts}">Cancel</a>
+  </p>
+</form>
+</body>
+</html>

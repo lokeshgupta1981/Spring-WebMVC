@@ -30,6 +30,7 @@
     <module>custom-error-views</module>
     <module>download-file</module>
     <module>spring-boot-crud-with-hibernate</module>
+    <module>spring-mvc-hibernate-crud</module>
   </modules>
 
   <dependencies>
