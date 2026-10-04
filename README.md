@@ -5,6 +5,6 @@
 3. [Spring CORS](https://howtodoinjava.com/spring5/webmvc/spring-mvc-cors-configuration/)
 4. [Spring Security 5](https://howtodoinjava.com/spring5/security5/security-java-config-enablewebsecurity-example/)
 4. [Spring Security Login Form](https://howtodoinjava.com/spring5/security5/login-form-example/)
-5. [Spring MVC Hibernate CRUD Example with Spring Boot 4](https://howtodoinjava.com/spring-mvc/spring-mvc-hibernate-crud-example/)
+6. [Spring MVC Hello World Example](https://howtodoinjava.com/spring-mvc/spring-mvc-hello-world-example/)
 
  

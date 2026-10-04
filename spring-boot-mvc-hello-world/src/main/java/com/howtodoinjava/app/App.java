@@ -2,10 +2,11 @@ package com.howtodoinjava.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.servlet.ServletComponentScan;
 
+/**
+ * Starts the Spring MVC Hello World application on the embedded Tomcat server (port 8080).
+ */
 @SpringBootApplication
-@ServletComponentScan
 public class App {
 
   public static void main(String[] args) {
